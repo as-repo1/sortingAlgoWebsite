@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sorting Algorithms</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Selection Sort</h2>
+            <p>Selection Sort is a simple comparison-based sorting algorithm that divides the input array into a sorted
+                and an unsorted region. It repeatedly selects the smallest (or largest) element from the unsorted region
+                and swaps it with the first element of the unsorted region.</p>
+
+            <h3>Algorithm</h3>
+            <div class="code-section">
+                <h4>C++</h4>
+                <pre><code class="cpp">
+#include &lt;iostream&gt;
+using namespace std;
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i &lt; n - 1; i++) {
+        int minIndex = i;
+
+        for (int j = i + 1; j &lt; n; j++) {
+            if (arr[j] &lt; arr[minIndex])
+                minIndex = j;
+        }
+
+        if (minIndex != i)
+            swap(arr[i], arr[minIndex]);
+    }
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    selectionSort(arr, n);
+
+    cout &lt;&lt; "Sorted array: ";
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+
+    return 0;
+}
+                </code></pre>
+                <h4>Python</h4>
+                <pre><code class="python">
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        min_idx = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+arr = [5, 3, 8, 4, 2]
+selection_sort(arr)
+
+print("Sorted array:", arr)
+                </code></pre>
+            </div>
+
+            <h3>Explanation</h3>
+            <p>Selection Sort divides the array into a sorted region and an unsorted region. It repeatedly finds the
+                smallest (or largest) element from the unsorted region and swaps it with the first element of the
+                unsorted region, expanding the sorted region.</p>
+
+            <h3>Complexity</h3>
+            <p>The average, worst-case, and best-case time complexity of Selection Sort is O(n^2), where n is the number
+                of elements in the array. The space complexity is O(1) since Selection Sort sorts the array in-place
+                without requiring additional space.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sorting Algorithms Website. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

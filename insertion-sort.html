@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sorting Algorithms</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Insertion Sort</h2>
+            <p>Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time by
+                comparing each item with its previous elements and inserting it into the correct position.</p>
+
+            <h3>Algorithm</h3>
+            <div class="code-section">
+                <h4>C++</h4>
+                <pre><code class="cpp">
+#include &lt;iostream&gt;
+using namespace std;
+
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i &lt; n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] &gt; key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    insertionSort(arr, n);
+
+    cout &lt;&lt; "Sorted array: ";
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+
+    return 0;
+}
+                </code></pre>
+                <h4>Python</h4>
+                <pre><code class="python">
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+
+        arr[j + 1] = key
+
+arr = [5, 3, 8, 4, 2]
+insertion_sort(arr)
+
+print("Sorted array:", arr)
+                </code></pre>
+            </div>
+
+            <h3>Explanation</h3>
+            <p>Insertion Sort works by repeatedly taking an element from the unsorted part of the array and inserting it
+                into its correct position in the sorted part of the array. It shifts larger elements to the right to
+                make room for the inserted element.</p>
+
+            <h3>Complexity</h3>
+            <p>The average and worst-case time complexity of Insertion Sort is O(n^2), where n is the number of elements
+                in the array. The best-case time complexity is O(n) when the array is already sorted. The space
+                complexity is O(1) since Insertion Sort sorts the array in-place without requiring additional space.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sorting Algorithms Website. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

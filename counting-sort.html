@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting Sort</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sorting Algorithms</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Counting Sort</h2>
+            <p>Counting Sort is an efficient sorting algorithm that sorts elements by counting the number of occurrences
+                of each distinct element and then reconstructing the sorted sequence.</p>
+
+            <h3>Algorithm</h3>
+            <div class="code-section">
+                <h4>C++</h4>
+                <pre><code class="cpp">
+#include &lt;iostream&gt;
+using namespace std;
+
+void countingSort(int arr[], int n, int range) {
+    int count[range] = {0};
+    int output[n];
+
+    for (int i = 0; i < n; i++)
+        count[arr[i]]++;
+
+    for (int i = 1; i < range; i++)
+        count[i] += count[i - 1];
+
+    for (int i = n - 1; i >= 0; i--) {
+        output[count[arr[i]] - 1] = arr[i];
+        count[arr[i]]--;
+    }
+
+    for (int i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int range = 10; // Range of elements in the array
+
+    countingSort(arr, n, range);
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+                </code></pre>
+                <h4>Python</h4>
+                <pre><code class="python">
+def counting_sort(arr, range):
+    n = len(arr)
+    count = [0] * range
+    output = [0] * n
+
+    for i in range(n):
+        count[arr[i]] += 1
+
+    for i in range(1, range):
+        count[i] += count[i - 1]
+
+    for i in range(n - 1, -1, -1):
+        output[count[arr[i]] - 1] = arr[i]
+        count[arr[i]] -= 1
+
+    for i in range(n):
+        arr[i] = output[i]
+
+arr = [5, 3, 8, 4, 2]
+counting_sort(arr, 10)  # Range of elements in the array
+
+print("Sorted array:", arr)
+                </code></pre>
+            </div>
+
+            <h3>Explanation</h3>
+            <p>Counting Sort counts the number of occurrences of each element in the input array and uses this information
+                to reconstruct the sorted sequence. It works by determining, for each element, the number of elements
+                that are less than it and uses this information to place the element in its correct sorted position.</p>
+
+            <h3>Complexity</h3>
+            <p>The time complexity of Counting Sort is O(n + k), where n is the number of elements in the array and k is
+                the range of elements. The space complexity is O(n + k) since Counting Sort requires additional space
+                for the counting array and the output array.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sorting Algorithms Website. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

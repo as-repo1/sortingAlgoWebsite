@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sorting Algorithms</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Bubble Sort</h2>
+            <p>Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent
+                elements, and swaps them if they are in the wrong order.</p>
+
+            <h3>Algorithm</h3>
+            <div class="code-section">
+                <h4>C++</h4>
+                <pre><code class="cpp">
+#include &lt;iostream&gt;
+using namespace std;
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i &lt; n - 1; i++) {
+        for (int j = 0; j &lt; n - i - 1; j++) {
+            if (arr[j] &gt; arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    bubbleSort(arr, n);
+
+    cout &lt;&lt; "Sorted array: ";
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+
+    return 0;
+}
+                </code></pre>
+                <h4>Python</h4>
+                <pre><code class="python">
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(n - i - 1):
+            if arr[j] &gt; arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+arr = [5, 3, 8, 4, 2]
+bubble_sort(arr)
+
+print("Sorted array:", arr)
+                </code></pre>
+            </div>
+
+            <h3>Explanation</h3>
+            <p>The Bubble Sort algorithm works by repeatedly swapping adjacent elements if they are in the wrong order.
+                In each pass, the largest (or smallest) element "bubbles" up to its correct position. This process is
+                repeated until the entire array is sorted.</p>
+
+            <h3>Complexity</h3>
+            <p>The average and worst-case time complexity of Bubble Sort is O(n^2), where n is the number of elements in
+                the array. The space complexity is O(1) since only a constant amount of additional space is required.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sorting Algorithms Website. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

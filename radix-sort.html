@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucket Sort</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sorting Algorithms</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Bucket Sort</h2>
+            <p>Bucket Sort is a sorting algorithm that works by distributing elements into a fixed number of buckets,
+                which are then sorted individually, either using a different sorting algorithm or recursively applying
+                Bucket Sort.</p>
+
+            <h3>Algorithm</h3>
+            <div class="code-section">
+                <h4>C++</h4>
+                <pre><code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+void bucketSort(float arr[], int n) {
+    vector&lt;float&gt; buckets[n];
+
+    for (int i = 0; i < n; i++) {
+        int bucketIndex = n * arr[i];
+        buckets[bucketIndex].push_back(arr[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        sort(buckets[i].begin(), buckets[i].end());
+    }
+
+    int index = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < buckets[i].size(); j++) {
+            arr[index++] = buckets[i][j];
+        }
+    }
+}
+
+int main() {
+    float arr[] = {0.5, 0.3, 0.8, 0.4, 0.2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    bucketSort(arr, n);
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+                </code></pre>
+                <h4>Python</h4>
+                <pre><code class="python">
+def bucket_sort(arr):
+    n = len(arr)
+    buckets = [[] for _ in range(n)]
+
+    for i in range(n):
+        bucket_index = int(n * arr[i])
+        buckets[bucket_index].append(arr[i])
+
+    for i in range(n):
+        buckets[i].sort()
+
+    index = 0
+    for i in range(n):
+        for j in range(len(buckets[i])):
+            arr[index] = buckets[i][j]
+            index += 1
+
+arr = [0.5, 0.3, 0.8, 0.4, 0.2]
+bucket_sort(arr)
+
+print("Sorted array:", arr)
+                </code></pre>
+            </div>
+
+            <h3>Explanation</h3>
+            <p>Bucket Sort divides the input range into a fixed number of buckets and distributes the elements into
+                different buckets based on their values. Each bucket is then individually sorted, either using a
+                different sorting algorithm or recursively applying Bucket Sort.</p>
+
+            <h3>Complexity</h3>
+            <p>The time complexity of Bucket Sort depends on the number of buckets and the sorting algorithm used for
+                each bucket. The average-case complexity is typically better than the worst-case complexity of O(n^2)
+                when using an efficient sorting algorithm for each bucket. The space complexity is O(n) since Bucket Sort
+                requires additional space for the buckets.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sorting Algorithms Website. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
